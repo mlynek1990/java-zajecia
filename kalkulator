@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class kalkulator {
+    public static void main(String[] args) {
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Wybierz opcje: ");
+            System.out.println("1. dodawanie");
+            System.out.println("2. odejmowanie");
+            System.out.println("3. mnozenie");
+            System.out.println("4. dzielenie");
+            System.out.println("5. modulo");
+            System.out.println("wcisnij x aby wyjsc");
+            String dzialanie = scanner.nextLine();
+            if (dzialanie.equals("x")){
+                break;
+            }
+            System.out.println("Podaj liczbe x:");
+            float x = scanner.nextInt();
+            System.out.println("Podaj liczbe y:");
+            float y = scanner.nextInt();
+            switch (dzialanie) {
+                case "1":
+                    System.out.println(x + y);
+                    break;
+                case "2":
+                    System.out.println(x - y);
+                    break;
+                case "3":
+                    System.out.println(x * y);
+                    break;
+                case "4":
+                    System.out.println(x / y);
+                    break;
+                case "5":
+                    System.out.println(x % y);
+                    break;
+                default:
+                    System.out.println("Wybrałeś nieprawidlowa opcje");
+                    break;
+            }
+
+        }
+    }
+}
