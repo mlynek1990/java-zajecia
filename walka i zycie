@@ -1,35 +1,33 @@
 
-import java.util.Random;
+import java.util.Scanner;
 
-public class Gracz {
-    private String name;
-    private int zycko;
-    private int exp;
-    private int damage;
+public class Main {
 
-    public Gracz() {
-        this.name = "player1";
-        this.zycko = 100;
-        this.exp = 0;
-        this.damage = 1;
-    }
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		Czlowiek player1 = new Czlowiek();
+		while (player1.getHealth()>0&&player1.getComputerHealth()>0) {
+			System.out.println("Wybierz opcje:");
+			System.out.println("1. walka");
+			System.out.println("2. leczenie");
+			System.out.println("3. statystyki");
+			int wyborUzytkownika = scanner.nextInt();
+			switch (wyborUzytkownika) {
+			case 1 : player1.walka();
+				break;
+			case 2 : player1.leczenie();
+				break;
+			case 3 : player1.statystyki();
+				break;
+			}
+		}
+		if (player1.getHealth()<=0) {
+			System.out.println("Przegrales!");
+		}
+		if (player1.getComputerHealth()<=0) {
+			System.out.println("Gratulacje!");
+			System.out.println("Wygrales");
+		}
+		}
 
-    public void statystyki() {
-        System.out.println("Players name: " + name);
-        System.out.println("Live: " + zycko);
-        System.out.println("Exp: " + exp);
-        System.out.println("Damage: " + damage);
-
-    }
-
-    public int walka() {
-        Random random = new Random();
-        this.zycko -= random.nextInt(80);
-        this.exp+=10;
-        return this.zycko;
-    }
-
-    public int leczenie() {
-        this.zycko += 10;
-        return this.zycko;
-    }
+	}
