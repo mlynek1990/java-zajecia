@@ -1,34 +1,41 @@
 import java.util.Random;
 
-public class Gracz {
-    private String name;
-    private int zycko;
-    private int exp;
-    private int damage;
-
-    public Gracz() {
-        this.name = "player1";
-        this.zycko = 100;
-        this.exp = 0;
-        this.damage = 1;
-    }
-
-    public void statystyki() {
-        System.out.println("Players name: " + name);
-        System.out.println("Live: " + zycko);
-        System.out.println("Exp: " + exp);
-        System.out.println("Damage: " + damage);
-
-    }
-
-    public int walka() {
-        Random random = new Random();
-        this.zycko -= random.nextInt(80);
-        this.exp+=10;
-        return this.zycko;
-    }
-
-    public int leczenie() {
-        this.zycko += 10;
-        return this.zycko;
-    }
+public class Czlowiek {
+private String name;
+private int health;
+private int exp;
+private int damage;
+private int computerHealth;
+public Czlowiek() {
+	this.name = "player1";
+	this.health = 100;
+	this.exp = 0;
+	this.damage = 10;
+	this.computerHealth = 500;
+}
+public int getHealth() {
+	return health;
+}
+public int getComputerHealth() {
+	return computerHealth;
+}
+public void statystyki() {
+	System.out.println("nazwa gracza: "+name);
+	System.out.println("hp gracza: "+health);
+	System.out.println("punkty doswiadczenia: "+exp);
+	System.out.println("zadawane obrazenia: "+damage);
+}
+public int walka() {
+	Random random = new Random();
+	this.health -= random.nextInt(100)+1;
+	this.computerHealth -= damage;
+	if (health>0) {
+		this.exp += 10;
+		this.damage +=10;
+	}
+	return this.health;
+}
+public int leczenie() {
+	return this.health += 100;
+}
+}
